@@ -1,0 +1,12 @@
+PureData external object
+
+resospeana~ <freq>
+
+振動子の共鳴の原理でスペクトラム解析するオブジェクト。
+
+* How to use
+  * compile (Mac OS X)
+  $ make -f Makefile.pd_darwin
+  $ cp "resospeana~.pd_darwin" ~/Library/Pd/
+
+

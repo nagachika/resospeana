@@ -1,0 +1,21 @@
+
+CC = gcc -arch i386
+CFLAGS = -I/Applications/Pd-extended.app/Contents/Resources/include \
+         -fPIC
+#LDSHARED = $(CC) -dynamic -bundle -undefined suppress -flat_namespace
+LDSHARED = $(CC) -dynamic -bundle -undefined dynamic_lookup
+
+PD_DYLIB_EXT=pd_darwin
+
+SRC = resospeana~.c
+OBJ = ${SRC:.c=.o}
+
+TARGET=resospeana~.${PD_DYLIB_EXT}
+
+${TARGET}:	${OBJ}
+
+resospeana~.${PD_DYLIB_EXT}:	${OBJ}
+	${LDSHARED} -o $@ $<
+
+.c.o:
+	${CC} ${CFLAGS} -c -o $@ $<
